@@ -26,7 +26,7 @@ logger = logging.getLogger(__name__)
 
 # 初始化Earth Engine
 try:
-    ee.Initialize(project='ee-liupanpan')
+    ee.Initialize(project='XXX (Here is your GEE user name)')
 except Exception as e:
     logger.error(f"初始化Earth Engine失败: {e}")
     raise
@@ -353,3 +353,4 @@ if __name__ == "__main__":
     logger.info("Google Drive导出脚本已准备就绪")
 
     logger.info("请通过main_export.py运行完整处理流程")
+
