@@ -1,7 +1,4 @@
-"""
-主处理和导出流程脚本
-用于执行LAI-LST非对称性分析的完整数据处理流程
-"""
+"""This script contains the main process procedure in geemap"""
 
 import os
 import sys
@@ -420,4 +417,5 @@ def main():
 
 
 if __name__ == "__main__":
+
     main()
