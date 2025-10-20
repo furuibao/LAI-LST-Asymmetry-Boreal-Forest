@@ -1,4 +1,4 @@
-"""_这个文件包含了整个项目所需要的处理工具函数_
+"""_This script contains all tools processing images using geemap_
 """
 
 import os
