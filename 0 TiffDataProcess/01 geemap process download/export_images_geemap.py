@@ -1,4 +1,4 @@
-"""_导出处理后的影像到Google Drive_
+"""_Export the processed images to Google drive_
 """
 
 import os
@@ -351,4 +351,5 @@ def monitor_all_tasks(task_dict: Dict) -> None:
 if __name__ == "__main__":
     # 使用示例
     logger.info("Google Drive导出脚本已准备就绪")
+
     logger.info("请通过main_export.py运行完整处理流程")
