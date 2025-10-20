@@ -29,7 +29,7 @@ logger = logging.getLogger(__name__)
 # 初始化geemap
 try:
     ee.Authenticate()
-    ee.Initialize(project='ee-liupanpan')
+    ee.Initialize(project='XXX (Here is your GEE user name)')
 except Exception as e:
     logger.error(f"初始化geemap失败: {e}")
     raise e
@@ -556,3 +556,4 @@ def apply_quality_mask(
     else:
         # 其他数据集暂不应用质量掩膜
         return image
+
