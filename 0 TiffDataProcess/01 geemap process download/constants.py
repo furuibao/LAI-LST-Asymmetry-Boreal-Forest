@@ -1,43 +1,43 @@
-"""常量定义 - 修复版本"""
+"""This script contains all constants used in all TIFF process"""
 
 import logging
 from enum import Enum
 
 
-# 气候区域
+# Climate regions
 class ClimateZone(Enum):
     BOREAL = "Boreal"
     TEMPERATE = "Temperate"
     TROPICAL = "Tropical"
 
 
-# 季节
-class Season(Enum):
-    SPRING = "Spring"
-    SUMMER = "Summer"
-    AUTUMN = "Autumn"
-    WINTER = "Winter"
+# Seasons
+# class Season(Enum):
+#     SPRING = "Spring"
+#     SUMMER = "Summer"
+#     AUTUMN = "Autumn"
+#     WINTER = "Winter"
 
 
-# LAI变化类型
+# LAI Change Types
 class ChangeType(Enum):
     INCREASE = 1
     DECREASE = -1
     NO_CHANGE = 0
 
 
-# LAI变化阈值
+# LAI Change threshold
 class ChangeRate(Enum):
     LAI_INCREASE_RATE = 0.15
     LAI_DECREASE_RATE = -0.15
 
 
-# 5km格网LAI变化阈值
+# LAI Change threshold in 5km grid
 class ChangeThresholed5km(Enum):
     COUNT_RATE = 0.7
 
 
-# 植被类型
+# Vegetation types
 class VegetationType(Enum):
     FOREST = "Forest"
     SHRUB = "Shrub"
@@ -45,7 +45,7 @@ class VegetationType(Enum):
     CROP = "Crop"
 
 
-# 数据集信息类
+# Datasets info class
 class DatasetInfo:
     def __init__(self, id: str, temporal: str, resolution: str, date_range: str):
         self.id = id
@@ -54,7 +54,7 @@ class DatasetInfo:
         self.date_range = date_range
 
 
-# 物候季节DOY范围
+# Phenological season DOY range
 PHENOLOGY_SEASON_DOY = {
     Season.SPRING: (99, 165),
     Season.SUMMER: (165, 253),
@@ -62,7 +62,7 @@ PHENOLOGY_SEASON_DOY = {
     Season.WINTER: (313, 99),
 }
 
-# 物候季节月份范围
+# Phenological season months range
 PHENOLOGY_SEASON_MONTHS = {
     Season.SPRING: [4, 5, 6],
     Season.SUMMER: [6, 7, 8, 9],
@@ -70,10 +70,10 @@ PHENOLOGY_SEASON_MONTHS = {
     Season.WINTER: [11, 12, 1, 2, 3, 4]
 }
 
-# 默认使用物候季节定义
+# Default use of phenological season definitions
 SEASON_MONTHS = PHENOLOGY_SEASON_MONTHS
 
-# 月份到季节的映射
+# Moth to season mapping
 MONTH_SEASON = {
     1: Season.WINTER, 2: Season.WINTER, 3: Season.WINTER,
     4: Season.SPRING, 5: Season.SPRING, 6: Season.SUMMER,
@@ -81,7 +81,7 @@ MONTH_SEASON = {
     10: Season.AUTUMN, 11: Season.WINTER, 12: Season.WINTER
 }
 
-# 植被类型到编码的映射
+# Vegetation type to code mapping
 VEGETATION_TYPE_CODE = {
     VegetationType.FOREST: [1, 2, 3, 4, 5],
     VegetationType.SHRUB: [6, 7],
@@ -89,7 +89,7 @@ VEGETATION_TYPE_CODE = {
     VegetationType.CROP: [12, 14]
 }
 
-# 数据集信息
+# Datasets info
 DATASETS = {
     "LAI": DatasetInfo("MODIS/061/MOD15A2H", "8d", "500m", "2000-2022"),
     "LST": DatasetInfo("MODIS/061/MOD11A2", "8d", "1km", "2000-2025"),
@@ -100,20 +100,19 @@ DATASETS = {
     "DSR": DatasetInfo("MODIS/062/MCD18A1", "d", "1km", "2000-2025")
 }
 
-# 气候区域矢量路径
+# The path of climate region SHP data (you need to switch to your own GEE asset path here)
 CLIMATE_ZONES = {
-    ClimateZone.BOREAL: "projects/ee-liupanpan/assets/BNU/LAI_LST/SHP/Boreal",
-    ClimateZone.TEMPERATE: "projects/ee-liupanpan/assets/BNU/LAI_LST/SHP/Temperate",
-    ClimateZone.TROPICAL: "projects/ee-liupanpan/assets/BNU/LAI_LST/SHP/Tropical"
+    ClimateZone.BOREAL: "XXX",
+    ClimateZone.TEMPERATE: "XXX",
+    ClimateZone.TROPICAL: "XXX"
 }
 
-# *** 关键修复: 统一变量命名映射 ***
-# 从GEE导出的波段名称到本地分析使用的名称的映射
+# Mapping of band names export ed from GEE to names used in local analysis
 BAND_NAME_MAPPING = {
     # Vegetation bands
-    'LAI_T1': 'LAI_Begin',      # T1期LAI作为初始值
-    'LAI_T2': 'LAI_End',        # T2期LAI作为结束值
-    'LAI_diff': 'LAI_diff',     # 保持不变
+    'LAI_T1': 'LAI_Begin',      # T1 LAI as the initial value
+    'LAI_T2': 'LAI_End',        # T2 LAI as the end value
+    'LAI_diff': 'LAI_diff',
     'LAI_Change_Rate': 'LAI_Change_Rate',
     'NDVI_T1': 'NDVI_Begin',
     'NDVI_T2': 'NDVI_End',
@@ -151,7 +150,7 @@ BAND_NAME_MAPPING = {
     'LAI_Change_Type': 'LAI_Change_Type'
 }
 
-# 数据类别定义(与GEE导出一致)
+# Data category definition
 CATEGORIES = {
     "vegetation": {
         "bands": [
@@ -205,26 +204,26 @@ CATEGORIES = {
     }
 }
 
-# 支持的区域
+# Supported regions
 REGIONS = ["Boreal", "Temperate", "Tropical"]
 
-# 默认区域
+# Default region
 DEFAULT_REGION = "Boreal"
 DEFAULT_CLIMATE_ZONE = ClimateZone.BOREAL
 
-# 支持的季节
+# Supported seasons
 SEASONS = ["Spring", "Summer", "Autumn", "Winter"]
 
-# 网格大小配置
+# Grid size configuration
 DEFAULT_SMALL_GRID_SIZE_KM = 5
 DEFAULT_LARGE_GRID_SIZE_KM = 50
 PIXEL_SIZE_M = 500
 
-# IDW参数
+# The paras for IDW
 DEFAULT_THRESHOLD = 0.7
-MIN_DISTANCE_M = 500.0  # 最小距离设为像素分辨率
+MIN_DISTANCE_M = 500.0  
 
-# 时间范围
+# Time range
 YEAR_RANGE = range(2005, 2020)
 MONTH_RANGE = range(1, 13)
 
@@ -234,10 +233,11 @@ YEAR_PAIRS = [
     "2015-2016", "2016-2017", "2017-2018", "2018-2019", "2019-2020"
 ]
 
-# 分块处理配置
+# Chunk processing configuration
 DEFAULT_CHUNK_SIZE = 1024
 DEFAULT_OVERLAP = 100
 MAX_MEMORY_MB = 2048
 
 # NoData值定义
+
 NODATA_VALUE = -32768
