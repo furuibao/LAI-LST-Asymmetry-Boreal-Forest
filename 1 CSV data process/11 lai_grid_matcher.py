@@ -1,26 +1,27 @@
 """
-该脚本用于匹配网格:
-基于"空代时"的思想, 将所有时间段的5km格网进行匹配
+This script is used to match grids:
+Based on the "space-for-time" principle, it matches 5km grids across all time periods.
 
-修改版：支持用户指定区域、模式和季节进行匹配，并按季节分别导出结果
+Modified version: supports user-specified regions, modes, and seasons for matching, 
+and exports results by season.
 
-1. 四种匹配模式：
-   - Mode1: 相同季节内的相反变化匹配
-   - Mode2: 不同季节内的相同变化匹配
-   - Mode3: 相同季节内的相同变化匹配
-   - Mode4: 不同季节内的相反变化匹配
+1. Four matching modes:
+   - Mode1: Matching opposite changes within the same season
+   - Mode2: Matching identical changes across different seasons
+   - Mode3: Matching identical changes within the same season
+   - Mode4: Matching opposite changes across different seasons
 
-2. 输出文件结构：
+2. Output file structure:
    matching_results/
    ├── Boreal/
-   │   ├── Spring_mode1.csv       # 单个季节匹配
-   │   ├── Summer_mode1.csv       # 单个季节匹配
-   │   ├── Spring_Summer_mode2.csv # 不同季节匹配
+   │   ├── Spring_mode1.csv       # Matching for a single season
+   │   ├── Summer_mode1.csv       # Matching for a single season
+   │   ├── Spring_Summer_mode2.csv # Matching for different seasons
    │   └── ...
    ├── Temperate/...
    ├── Tropical/...
-   ├── matching_summary_*.csv     # 总体统计
-   └── region_summary_*.csv       # 区域统计
+   ├── matching_summary_*.csv     # Overall statistics
+   └── region_summary_*.csv       # Regional statistics
 """
 
 import pandas as pd
@@ -860,8 +861,8 @@ def get_user_input(available_regions: List[str], available_seasons: List[str]) -
 def main():
     """主函数"""
     # 配置路径
-    input_directory = r"D:\article\SynologyDrive\LAI-LST-Asymmetric\data\outCSV\00_ori"  # 数据根目录路径
-    output_directory = r"D:\article\SynologyDrive\LAI-LST-Asymmetric\data\outCSV\01_matching_results"  # 输出目录
+    input_directory = r"Your input directory"  # 数据根目录路径
+    output_directory = r"Your output directory"  # 输出目录
 
     try:
         # 创建优化版分析器实例
